@@ -1,0 +1,34 @@
+{
+  "name": "discord_message",
+  "version": "1.0.0",
+  "description": "subscribe discord message",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "start": "ts-node src/test.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangshengjie/discord_message_subscribe.git"
+  },
+  "keywords": [
+    "discord"
+  ],
+  "author": "z.cejay@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangshengjie/discord_message_subscribe/issues"
+  },
+  "homepage": "https://github.com/zhangshengjie/discord_message_subscribe#readme",
+  "dependencies": {
+    "puppeteer": "^13.0.0",
+    "rxjs": "^7.4.0",
+    "zlib-sync": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^5.4.4",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
