@@ -4,7 +4,7 @@
  * @Autor: z.cejay@gmail.com
  * @Date: 2021-12-18 21:38:38
  * @LastEditors: cejay
- * @LastEditTime: 2021-12-19 18:17:14
+ * @LastEditTime: 2021-12-21 16:07:08
  */
 import { Observable } from "rxjs";
 
@@ -48,6 +48,14 @@ declare interface GuildMsg {
      * 消息唯一ID
      */
     id: string;
+    /**
+     * 发消息人姓名
+     */
+    username: string;
+    /**
+     * 发消息人ID
+     */
+    userid: string;
     /**
      * 消息内容
      */

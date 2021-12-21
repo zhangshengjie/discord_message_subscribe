@@ -1,6 +1,6 @@
 {
   "name": "discord_message",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "subscribe discord message",
   "main": "dist/index.js",
   "types": "types/index.d.ts",

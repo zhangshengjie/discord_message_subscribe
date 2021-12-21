@@ -4,7 +4,7 @@
  * @Autor: z.cejay@gmail.com
  * @Date: 2021-12-15 21:29:14
  * @LastEditors: cejay
- * @LastEditTime: 2021-12-19 18:20:01
+ * @LastEditTime: 2021-12-21 16:11:20
  */
 
 import puppeteer from 'puppeteer';
@@ -204,8 +204,15 @@ export class Discord {
                 const guild = this.guildMap.get(guild_id);
                 if (guild) {
                     this.log(`${guild.name} => ${data.d.content}`);
-                    let content = data.d.content || '';
-                    subject.next(new DiscordEvent(DiscordEventType.MESSAGE_CREATE, new GuildMsg(guild_id, content)));
+                    const content = data.d.content || '';
+                    let username = '';
+                    let userid = '';
+                    if (data.d.author) {
+                        username = data.d.author.username || '';
+                        userid = data.d.author.id || '';
+                    }
+                    subject.next(new DiscordEvent(DiscordEventType.MESSAGE_CREATE,
+                        new GuildMsg(guild_id, content, username, userid)));
                 }
             } else {
                 this.log('发现未知频道');
@@ -260,12 +267,16 @@ export enum DiscordEventType {
 }
 
 export class GuildMsg {
-    constructor(_id: string, _msg: string) {
+    constructor(_id: string, _msg: string, _username: string, _userid: string) {
         this.id = _id;
         this.msg = _msg;
+        this.userid = _userid;
+        this.username = _username;
     }
     id: string;
     msg: string;
+    username: string;
+    userid: string;
 }
 
 export class Guild {
@@ -342,6 +353,12 @@ export class Ws_MESSAGE_CREATE_D {
     content?: string;
     channel_id?: string;
     guild_id?: string;
+
+    author?: {
+        username?: string;
+        id?: string;
+    }
+
 }
 
 
